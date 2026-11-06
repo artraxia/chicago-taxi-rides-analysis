@@ -24,7 +24,7 @@ Projeto em três camadas: **coleta** (web scraping do clima de Chicago, nov/2017
 ## Etapas
 
 1. **Coleta** — `requests` + `BeautifulSoup`: tabela horária de clima de Chicago (`weather_records`) extraída pelo `id` da tabela HTML.
-2. **SQL** — registro das consultas: corridas por empresa (15–16/11), empresas Yellow/Blue, Flash Cab × Taxi Affiliation × Other, IDs de O'Hare e Loop, classificação Good/Bad por hora, corridas Loop → O'Hare aos sábados com `DATE_TRUNC` e `EXTRACT(DOW)`. As consultas completas estão em [`sql-data-analysis-postgresql`](https://github.com/artraxia/sql-data-analysis-postgresql/tree/main/06-projeto-zuber).
+2. **SQL** — registro das consultas: corridas por empresa (15–16/11), empresas Yellow/Blue, Flash Cab × Taxi Affiliation × Other, IDs de O'Hare e Loop, classificação Good/Bad por hora, corridas Loop → O'Hare aos sábados com `DATE_TRUNC` e `EXTRACT(DOW)`. As seis consultas estão em [`sql/`](sql/).
 3. **EDA** — função `inspect()` reutilizável (tipos, nulos, duplicados), top 10 bairros, gráficos de empresas e destinos com conclusões apoiadas em números.
 4. **Teste de hipótese** — limpeza de durações inválidas e duplicados; outliers por IQR com piso físico de 10 min; H₀/H₁ formuladas; **Levene** para escolher entre Student e **Welch**; teste de robustez sem outliers; interpretação com tamanho de efeito e limitações.
 5. **Recomendações** — concentrar motoristas no centro e na rota do aeroporto; usar a previsão do tempo na estimativa de tempo de viagem; validar hipóteses com dados de tarifa, distância e horário.
@@ -34,6 +34,7 @@ Projeto em três camadas: **coleta** (web scraping do clima de Chicago, nov/2017
 ```
 notebook/zuber_chicago_taxi.ipynb   # análise completa, com saídas e gráficos
 docs/                               # gráficos exportados
+sql/                                # as 6 consultas PostgreSQL do projeto
 data/                               # project_sql_result_01/04/07.csv (não versionados)
 requirements.txt
 ```
